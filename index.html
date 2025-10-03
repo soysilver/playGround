@@ -24,7 +24,7 @@
   <div class="hint">외부 API 사용중 — 개인 서버로 바꾸면 제3자 노출 방지 가능</div>
 
   <script>
-    // 외부 API(클라이언트 IP 반환) 사용
+    
     fetch('https://api.ipify.org?format=json')
       .then(r => r.json())
       .then(data => {
