@@ -7,34 +7,24 @@
   body{font-family:system-ui,Segoe UI,Roboto;display:flex;min-height:100vh;
        align-items:center;justify-content:center;flex-direction:column;background:#111;color:#fff}
   .ip{font-size:28px;padding:20px 30px;border-radius:12px;background:linear-gradient(90deg,#222,#2a2a2a);}
-  .mirror {
-    margin-top:8px;
-    transform: scaleY(-1);
-    opacity:0.25;
-    filter: blur(0.6px);
-    pointer-events:none;
-    user-select:none;
-  }
-  .hint{margin-top:16px;font-size:12px;color:#bbb}
+
 </style>
 </head>
 <body>
   <div class="ip" id="ipDisplay">당신의 IP: <strong id="ip">불러오는 중…</strong></div>
-  <div class="ip mirror" id="ipMirror">당신의 IP: <strong id="ip2"></strong></div>
-  <div class="hint">외부 API 사용중 — 개인 서버로 바꾸면 제3자 노출 방지 가능</div>
 
   <script>
     
     fetch('https://api.ipify.org?format=json')
       .then(r => r.json())
       .then(data => {
-        const ip = data.ip || '알 수 없음';
+        const ip = data.ip || 'Unknown';
         document.getElementById('ip').innerText = ip;
         document.getElementById('ip2').innerText = ip;
       })
       .catch(e => {
-        document.getElementById('ip').innerText = '불러오기 실패';
-        document.getElementById('ip2').innerText = '불러오기 실패';
+        document.getElementById('ip').innerText = 'Failed to load';
+        document.getElementById('ip2').innerText = 'Failed to load';
       });
   </script>
 </body>
